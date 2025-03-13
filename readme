@@ -1,0 +1,47 @@
+Jogo de Pong 3D
+Bem-vindo ao meu Jogo de Pong 3D! Fiz esse projeto pra praticar Pygame e PyOpenGL, e acabou ficando bem legal. É um Pong clássico, mas com raquetes e bola renderizadas em 3D, dando um visual diferente. Vou explicar aqui o que tem no jogo, como rodar e o que aprendi fazendo ele.
+
+Sobre o Jogo
+Esse é um Pong pra dois jogadores, tipo o de Atari, mas com um toque 3D. Tem duas raquetes (vermelhas) que se movem pra cima e pra baixo, uma bola azul que quica entre elas, e um placar pra ver quem ganha. O objetivo é marcar 20 pontos primeiro, batendo a bola pro lado do adversário. Usei PyOpenGL pra fazer os gráficos 3D e Pygame pra lidar com os controles e a interface.
+
+Jogador A (esquerda): Usa W e S pra mover a raquete.
+Jogador B (direita): Usa as setas pra cima e pra baixo.
+Reiniciar: Quando alguém ganha, aperta ESPAÇO pra começar de novo.
+A bola tem uma física simples: ela reflete nas raquetes com um pequeno aumento de velocidade e até pega um ângulo dependendo de onde bate. Se passar da raquete, o outro jogador marca ponto.
+
+Como Rodar
+Pra jogar, você precisa ter Python instalado (eu usei o 3.11, mas deve funcionar em versões recentes). Segue o passo a passo que eu fiz:
+
+Instalar as dependências: No terminal, rodei esses comandos pra instalar o que precisa:
+bash
+
+Recolher
+
+Encapsular
+
+Copiar
+pip install pygame PyOpenGL PyOpenGL_accelerate
+O PyOpenGL_accelerate ajuda a rodar mais suave, mas acho que só o PyOpenGL já funciona.
+Baixar o código: Salvei tudo num arquivo chamado pong_3d.py (ou o nome que você quiser). Só copia o código que tá aqui e salva.
+Executar: No terminal, na pasta onde tá o arquivo, é só rodar:
+bash
+
+Recolher
+
+Encapsular
+
+Copiar
+python pong_3d.py
+A tela abre com 1280x720 pixels, e o jogo já começa direto.
+O Que Tem no Código
+RenderizadorTexto: Criei essa classe pra mostrar texto na tela (placar e mensagem de vitória). Usei uma fonte Arial bold pra ficar legível e converti pra textura OpenGL. Demorei pra acertar a projeção 2D, mas o gluOrtho2D resolveu.
+Raquete: Uma classe pra cada raquete. São cubos 3D (não usei esferas pra simplificar). Coloquei elas a 8 unidades de distância uma da outra pra dar espaço pro jogo.
+Bola: Fiz um círculo 3D com GL_TRIANGLE_FAN. Ela começa com velocidade aleatória e reseta pro centro quando alguém marca ponto.
+Colisão: A bola reflete nas raquetes e nas bordas verticais. Ajustei os cálculos pra detectar direitinho onde ela bate.
+Interface: Mostro o placar no canto superior e uma mensagem de vitória no meio quando acaba.
+Como Eu Fiz
+Comecei com um Pong básico em 2D no Pygame, mas quis deixar mais interessante com 3D. Pesquisei como usar PyOpenGL e fui testando. Primeiro fiz as raquetes como quadrados, mas depois passei pra cubos pra dar profundidade. A bola foi um desafio, porque eu queria ela redonda, então usei trigonometria pra criar os vértices.
+
+A parte do texto deu trabalho. Tive que mexer com texturas e mudar a projeção pra 2D na hora de desenhar, senão ficava tudo torto. A iluminação eu deixei simples (só a cor dos objetos), mas dá pra melhorar depois.
+
+A lógica de colisão e pontuação eu ajustei várias vezes. No começo, a bola atravessava as raquetes, mas coloquei uns abs() pra checar a distância e funcionou. Também adicionei um aumento de velocidade (1.15x) pra ficar mais desafiador.

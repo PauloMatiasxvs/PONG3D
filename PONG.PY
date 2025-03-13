@@ -1,4 +1,4 @@
-# PONG3D_ULTIMATE_FIX.py - TEXTO E POSICIONAMENTO CORRETOS
+#melhorias
 import pygame
 import random
 import math
